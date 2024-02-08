@@ -12,7 +12,7 @@ function Twitter() {
   const [tweets, setTweets] = useState(initialDummyTweets); //creating a state component to manage the state of tweets
   const handleAddTweet = (text) => {
     //this function will change the state and add new tweets inside tweets array
-    let nextId = tweets.length > 0 ? tweets[tweets.length - 1].id : 0;
+    let nextId = tweets.length > 0 ? tweets[tweets.length - 1].id + 1 : 0;
     setTweets([
       ...tweets,
       { content: text, likeCount: Math.floor(Math.random() * 10), id: nextId },
