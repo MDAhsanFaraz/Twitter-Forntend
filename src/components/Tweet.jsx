@@ -6,7 +6,18 @@ function Tweet({ content, likeCount, createdAt }) {
   return (
     <div className="tweet-wrapper">
       <div className="tweet-edit-wrapper">
-        <div className="tweet-content">{isEditting ? <input /> : content} </div>
+        <div className="tweet-content">
+          {isEditting ? (
+            <input
+              value={content}
+              onChange={(e) => {
+                console.log(e.target.value);
+              }}
+            />
+          ) : (
+            content
+          )}{" "}
+        </div>
         <div className="edit-tweet">
           <button onClick={() => setIsEditting(!isEditting)}>
             {isEditting ? "Save" : "Edit"}

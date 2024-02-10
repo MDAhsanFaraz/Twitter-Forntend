@@ -2,7 +2,6 @@ import Tweet from "./Tweet";
 import "../CSS/TweetList.css";
 
 function TweetList({ tweets }) {
-  console.log(tweets);
   return (
     <ul className="tweet-list">
       {tweets.map((tweet) => (
