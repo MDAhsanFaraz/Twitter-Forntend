@@ -4,7 +4,12 @@
   width: 600px;
   font-size: larger;
 }
-.likes {
+.like-createdAt-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.likes,
+.createdAt {
   font-size: xx-small;
 }
 .tweet-content {

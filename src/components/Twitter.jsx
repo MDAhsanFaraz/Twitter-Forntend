@@ -3,9 +3,19 @@ import AddTweet from "./AddTweet";
 import TweetList from "./TweetList";
 
 const initialDummyTweets = [
-  { id: 0, content: "we have new twitter called threads ", likeCount: 90 },
-  { id: 1, content: "Farazzzzzz", likeCount: 10 },
-  { id: 2, content: "DAmmmmmmmmmmmmmmmm", likeCount: 20 },
+  {
+    id: 0,
+    content: "we have new twitter called threads ",
+    likeCount: 90,
+    createdAt: new Date(),
+  },
+  { id: 1, content: "Farazzzzzz", likeCount: 10, createdAt: new Date() },
+  {
+    id: 2,
+    content: "DAmmmmmmmmmmmmmmmm",
+    likeCount: 20,
+    createdAt: new Date(),
+  },
 ];
 
 function Twitter() {
@@ -15,7 +25,12 @@ function Twitter() {
     let nextId = tweets.length > 0 ? tweets[tweets.length - 1].id + 1 : 0;
     setTweets([
       ...tweets,
-      { content: text, likeCount: Math.floor(Math.random() * 10), id: nextId },
+      {
+        content: text,
+        likeCount: Math.floor(Math.random() * 10),
+        id: nextId,
+        createdAt: new Date(),
+      },
     ]);
   };
   return (
