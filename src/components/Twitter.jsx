@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import AddTweet from "./AddTweet";
 import TweetList from "./TweetList";
 
@@ -20,7 +20,7 @@ const initialDummyTweets = [
 
 function Twitter() {
   const [tweets, setTweets] = useState(initialDummyTweets); //creating a state component to manage the state of tweets
-  const handleAddTweet = (text) => {
+  const handleAddTweet = useCallback((text) => {
     //this function will change the state and add new tweets inside tweets array
     let nextId = tweets.length > 0 ? tweets[tweets.length - 1].id + 1 : 0;
     setTweets([
@@ -32,9 +32,9 @@ function Twitter() {
         createdAt: new Date(),
       },
     ]);
-  };
+  }, []);
 
-  const handleEditTweet = (tweet) => {
+  const handleEditTweet = useCallback((tweet) => {
     //we will recieve updated tweet obj with same tweet id
     setTweets(
       tweets.map((currentTweet) => {
@@ -48,11 +48,11 @@ function Twitter() {
         }
       })
     );
-  };
-  const sortTweets = () => {
+  }, []);
+  const sortTweets = useCallback(() => {
     tweets.sort((t1, t2) => t2.createdAt.getTime() - t1.createdAt.getTime());
     setTweets([...tweets]);
-  };
+  });
   return (
     <>
       <AddTweet onAddTweet={handleAddTweet} />
