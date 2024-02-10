@@ -33,10 +33,26 @@ function Twitter() {
       },
     ]);
   };
+
+  const handleEditTweet = (tweet) => {
+    //we will recieve updated tweet obj with same tweet id
+    setTweets(
+      tweets.map((currentTweet) => {
+        //using map function as soon we find tweet obj with same id inside tweet array
+        // we replace in the if() by returning the new tweet obj else we keep the other tweets obj same by returning
+        // currentTweet
+        if (currentTweet.id === tweet.id) {
+          return tweet;
+        } else {
+          return currentTweet;
+        }
+      })
+    );
+  };
   return (
     <>
       <AddTweet onAddTweet={handleAddTweet} />
-      <TweetList tweets={tweets} />
+      <TweetList tweets={tweets} onEditTweet={handleEditTweet} />
     </>
   );
 }
