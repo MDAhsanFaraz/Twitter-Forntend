@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import AddTweet from "./AddTweet";
 import TweetList from "./TweetList";
 
@@ -18,6 +18,7 @@ const initialDummyTweets = [
   },
 ];
 
+const MemoisedTweet = memo(AddTweet);
 function Twitter() {
   const [tweets, setTweets] = useState(initialDummyTweets); //creating a state component to manage the state of tweets
   const handleAddTweet = useCallback((text) => {
@@ -55,7 +56,7 @@ function Twitter() {
   });
   return (
     <>
-      <AddTweet onAddTweet={handleAddTweet} />
+      <MemoisedTweet onAddTweet={handleAddTweet} />
       <button onClick={sortTweets}>Sort Tweet By CreatedAt</button>
       <TweetList tweets={tweets} onEditTweet={handleEditTweet} />
     </>
